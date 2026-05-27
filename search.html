@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>
+
+WROMP Search
+
+</title>
+
+</head>
+
+<body>
+
+<h1>
+
+WROMP Search
+
+</h1>
+
+<h3>
+
+Select Products
+
+</h3>
+
+<div id="product_list">
+
+Loading...
+
+</div>
+
+<br>
+
+Other:
+
+<input
+id="other_box"
+type="text">
+
+<button
+onclick="addOther()">
+
+Add
+
+</button>
+
+<br><br>
+
+<button
+onclick="runSearch()">
+
+Search
+
+</button>
+
+<hr>
+
+<div id="results">
+
+</div>
+
+<script>
+
+let selectedProducts=[];
+
+async function loadProducts(){
+
+const response=
+
+await fetch(
+
+"lookups/products.csv"
+
+);
+
+const text=
+
+await response.text();
+
+const lines=
+
+text.split("\n");
+
+let output="";
+
+lines.forEach(
+
+line=>{
+
+line=line.trim();
+
+if(line!=""){
+
+output +=
+
+"<input " +
+
+"type='checkbox' " +
+
+"value='" +
+
+line +
+
+"' " +
+
+"onclick='toggleProduct(this)'>" +
+
+line +
+
+"<br>";
+
+}
+
+}
+
+);
+
+document.getElementById(
+
+"product_list"
+
+).innerHTML=
+
+output;
+
+}
+
+function toggleProduct(
+
+box
+
+){
+
+if(
+
+box.checked
+
+){
+
+selectedProducts.push(
+
+box.value
+
+);
+
+}
+
+else{
+
+selectedProducts=
+
+selectedProducts.filter(
+
+p =>
+
+p !=
+
+box.value
+
+);
+
+}
+
+}
+
+function addOther(){
+
+let other=
+
+document.getElementById(
+
+"other_box"
+
+).value;
+
+if(
+
+other!=""
+
+){
+
+selectedProducts.push(
+
+other
+
+);
+
+alert(
+
+"Added: " +
+
+other
+
+);
+
+}
+
+}
+
+async function runSearch(){
+
+const response=
+
+await fetch(
+
+"data/businesses_store.csv"
+
+);
+
+const text=
+
+await response.text();
+
+const lines=
+
+text.split("\n");
+
+let output="";
+
+lines.forEach(
+
+line=>{
+
+selectedProducts.forEach(
+
+product=>{
+
+let normLine=
+
+line
+
+.toLowerCase()
+
+.replaceAll(
+
+" ",
+
+""
+
+);
+
+let normProd=
+
+product
+
+.toLowerCase()
+
+.replaceAll(
+
+" ",
+
+""
+
+);
+
+if(
+
+normLine.includes(
+
+normProd
+
+)
+
+){
+
+output +=
+
+"<p>" +
+
+line +
+
+"</p>";
+
+}
+
+}
+
+);
+
+}
+
+);
+
+document.getElementById(
+
+"results"
+
+).innerHTML=
+
+output;
+
+}
+
+loadProducts();
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>
+
+WROMP Matches
+
+</title>
+
+</head>
+
+<body>
+
+<h1>
+
+WROMP Matches
+
+</h1>
+
+Selected Product:
+
+<select
+
+id="product">
+
+<option>
+
+Biochar
+
+</option>
+
+<option>
+
+Sawlogs
+
+</option>
+
+<option>
+
+Chips
+
+</option>
+
+<option>
+
+Lumber
+
+</option>
+
+</select>
+
+<button
+
+onclick=
+
+"runMatch()"
+
+>
+
+Find Matches
+
+</button>
+
+<br><br>
+
+<div
+
+id="results">
+
+</div>
+
+<script>
+
+async function runMatch(){
+
+let product=
+
+document.getElementById(
+
+"product"
+
+).value
+
+.toLowerCase();
+
+const response=
+
+await fetch(
+
+"data/businesses_store.csv"
+
+);
+
+const text=
+
+await response.text();
+
+const lines=
+
+text.split(
+
+"\n"
+
+);
+
+let output=
+
+"<h2>" +
+
+product +
+
+"</h2>";
+
+lines.forEach(
+
+line=>{
+
+let normalized=
+
+line
+
+.toLowerCase()
+
+.replaceAll(
+
+" ",
+
+""
+
+);
+
+if(
+
+normalized.includes(
+
+product
+
+.replaceAll(
+
+" ",
+
+""
+
+)
+
+)
+
+){
+
+output +=
+
+"<p>" +
+
+line +
+
+"</p>";
+
+}
+
+}
+
+);
+
+document.getElementById(
+
+"results"
+
+).innerHTML=
+
+output;
+
+}
+
+</script>
+
+<br><hr><br>
+
+<button
+
+onclick=
+
+"window.location=
+'business_intake.html'"
+
+>
+
+Survey
+
+</button>
+
+<button
+
+onclick=
+
+"window.location=
+'search.html'"
+
+>
+
+Search
+
+</button>
+
+</body>
+
+</html>
+

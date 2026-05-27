@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>
+
+WROMP Survey
+
+</title>
+
+</head>
+
+<body>
+
+<h1>
+
+WROMP Business Survey
+
+</h1>
+
+Business:
+
+<input id="business">
+
+<br><br>
+
+Website:
+
+<input id="website">
+
+<br><br>
+
+Contact:
+
+<input id="contact">
+
+<br><br>
+
+Email:
+
+<input id="email">
+
+<br><br>
+
+Phone:
+
+<input id="phone">
+
+<br><br>
+
+ZIP / Region:
+
+<input id="zip">
+
+<br><br>
+
+Description:
+
+<br>
+
+<textarea
+
+id="description"
+
+rows="4"
+
+cols="40">
+
+</textarea>
+
+<br><br>
+
+<h2>
+
+Products
+
+</h2>
+
+<table border=1>
+
+<tr>
+
+<th>
+
+Product
+
+</th>
+
+<th>
+
+Provide
+
+</th>
+
+<th>
+
+Need
+
+</th>
+
+</tr>
+
+<tbody
+
+id="product_table">
+
+</tbody>
+
+</table>
+
+<br>
+
+Other:
+
+<input id="other">
+
+<br><br>
+
+Match Alerts:
+
+<select id="alerts">
+
+<option>
+
+Yes
+
+</option>
+
+<option>
+
+No
+
+</option>
+
+</select>
+
+<br><br>
+
+Broadcast Notices:
+
+<select id="broadcast">
+
+<option>
+
+Yes
+
+</option>
+
+<option>
+
+No
+
+</option>
+
+</select>
+
+<br><br>
+
+<button
+
+onclick=
+
+"submitSurvey()"
+
+>
+
+Submit Survey
+
+</button>
+
+<button
+
+onclick=
+
+"window.location=
+'search.html'"
+
+>
+
+Search WROMP
+
+</button>
+
+<button
+
+onclick=
+
+"window.location=
+'matches.html'"
+
+>
+
+View Matches
+
+</button>
+
+<script>
+
+async function loadProducts(){
+
+const response=
+
+await fetch(
+
+"lookups/products.csv"
+
+);
+
+const text=
+
+await response.text();
+
+const lines=
+
+text.split(
+
+"\n"
+
+);
+
+let output="";
+
+lines.forEach(
+
+line=>{
+
+line=line.trim();
+
+if(
+
+line!=""
+
+){
+
+output +=
+
+"<tr>" +
+
+"<td>" +
+
+line +
+
+"</td>" +
+
+"<td>" +
+
+"<input type='checkbox'>" +
+
+"</td>" +
+
+"<td>" +
+
+"<input type='checkbox'>" +
+
+"</td>" +
+
+"</tr>";
+
+}
+
+}
+
+);
+
+document.getElementById(
+
+"product_table"
+
+).innerHTML=
+
+output;
+
+}
+
+function submitSurvey(){
+
+alert(
+
+"WROMP Survey Submitted"
+
+);
+
+}
+
+loadProducts();
+
+</script>
+
+</body>
+
+</html>

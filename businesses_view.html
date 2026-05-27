@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Businesses</title>
+</head>
+
+<body>
+
+<h1>Registered Businesses</h1>
+
+<table border="1"
+id="business_table">
+
+<tr>
+<th>Name</th>
+<th>ZIP</th>
+<th>Role</th>
+<th>Provide</th>
+<th>Need</th>
+</tr>
+
+</table>
+
+<script>
+
+async function loadBusinesses(){
+
+    const response =
+        await fetch(
+            "data/businesses_store.csv"
+        );
+
+    const text =
+        await response.text();
+
+    const rows =
+        text.split("\n");
+
+    const table =
+        document.getElementById(
+            "business_table"
+        );
+
+    rows.forEach(
+        row => {
+
+        let cols =
+            row.split(",");
+
+        if(
+            cols.length > 4
+        ){
+
+            let tr =
+                document.createElement(
+                    "tr"
+                );
+
+            cols.slice(
+                0,5
+            ).forEach(
+                col => {
+
+                let td =
+                    document.createElement(
+                        "td"
+                    );
+
+                td.textContent =
+                    col;
+
+                tr.appendChild(
+                    td
+                );
+
+            });
+
+            table.appendChild(
+                tr
+            );
+
+        }
+
+    });
+
+}
+
+loadBusinesses();
+
+</script>
+
+</body>
+
+</html>
