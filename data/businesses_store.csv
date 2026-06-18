@@ -1,2 +1,14 @@
-BusinessName,ZIP,Role,Category,Email,Provide,Need,MaxHaul
-Taos Biochar,87571,Supplier,Biochar,,Biochar,Chips,
+BusinessName,ZIP,Role,Category,Email,Provide,Need,Contact Person,Phone
+Taos Biochar,87571,Supplier,Biochar,,Biochar,Chips,,
+,,,,,,,,
+c,,Supplier,,,Sawlogs,Sawlogs,,
+WROMP Marketplace,87530,Broker,,,Sawlogs,Firewood,,
+Comunidades,87571,Supplier,,,Lumber,Sawlogs,,
+WROMP demo,,Broker,,,Small Diameter Pine,Craft Wood,,
+jemez,,Restoration,,,Corral Poles,Posts,,
+,,,,,,,,
+Test321,88888,Supplier,,,Biochar,Biochar Feedstock,,
+Test Save,87571,Supplier,,,Biochar,Chips,,
+new busines,12345,Supplier,,,Biochar,Biochar Feedstock,,
+Morning Awakes,87530,Supplier,,,Posts,Small Diameter Pine,,
+Now or Never,99999,Transport,,,Biochar,Chips,,

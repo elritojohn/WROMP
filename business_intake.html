@@ -1,293 +1,268 @@
 <!DOCTYPE html>
-
 <html>
 
 <head>
-
-<title>
-
-WROMP Survey
-
-</title>
-
+<title>Business Registration</title>
 </head>
 
 <body>
 
-<h1>
+<h1>Business Registration</h1>
 
-WROMP Business Survey
+<form>
 
-</h1>
+Business Name:
 
-Business:
-
-<input id="business">
-
-<br><br>
-
-Website:
-
-<input id="website">
+<input
+id="business_name"
+type="text">
 
 <br><br>
 
-Contact:
+ZIP:
 
-<input id="contact">
+<input
+id="zip"
+type="text">
+
+<br><br>
+
+Role:
+
+<select
+id="role_dropdown">
+
+<option>
+Loading Roles...
+</option>
+
+</select>
+
+<br><br>
+
+Category:
+
+<input
+id="category"
+type="text">
 
 <br><br>
 
 Email:
 
-<input id="email">
+<input
+id="email"
+type="text">
 
 <br><br>
 
-Phone:
+Products Provided:
 
-<input id="phone">
-
-<br><br>
-
-ZIP / Region:
-
-<input id="zip">
-
-<br><br>
-
-Description:
-
-<br>
-
-<textarea
-
-id="description"
-
-rows="4"
-
-cols="40">
-
-</textarea>
-
-<br><br>
-
-<h2>
-
-Products
-
-</h2>
-
-<table border=1>
-
-<tr>
-
-<th>
-
-Product
-
-</th>
-
-<th>
-
-Provide
-
-</th>
-
-<th>
-
-Need
-
-</th>
-
-</tr>
-
-<tbody
-
-id="product_table">
-
-</tbody>
-
-</table>
-
-<br>
-
-Other:
-
-<input id="other">
-
-<br><br>
-
-Match Alerts:
-
-<select id="alerts">
+<select
+id="provide_dropdown">
 
 <option>
-
-Yes
-
-</option>
-
-<option>
-
-No
-
+Loading Products...
 </option>
 
 </select>
 
 <br><br>
 
-Broadcast Notices:
+Products Desired:
 
-<select id="broadcast">
-
-<option>
-
-Yes
-
-</option>
+<select
+id="need_dropdown">
 
 <option>
-
-No
-
+Loading Products...
 </option>
 
 </select>
 
 <br><br>
 
-<button
+Maximum Haul:
 
-onclick=
+<input
+id="haul"
+type="text">
 
-"submitSurvey()"
-
->
-
-Submit Survey
-
-</button>
+<br><br>
 
 <button
+type="button"
+onclick="submitBusiness()">
 
-onclick=
-
-"window.location=
-'search.html'"
-
->
-
-Search WROMP
+Register Business
 
 </button>
+<br><br>
 
-<button
-
-onclick=
-
-"window.location=
-'matches.html'"
-
->
-
-View Matches
-
-</button>
+<a href="index.html">
+<button type="button">Return to Home</button>
+</a>
+</form>
 
 <script>
 
-async function loadProducts(){
-
-const response=
-
-await fetch(
-
-"lookups/products.csv"
-
-);
-
-const text=
-
-await response.text();
-
-const lines=
-
-text.split(
-
-"\n"
-
-);
-
-let output="";
-
-lines.forEach(
-
-line=>{
-
-line=line.trim();
-
-if(
-
-line!=""
-
+async function loadDropdown(
+    csvFile,
+    dropdownID
 ){
 
-output +=
+    const response =
+        await fetch(
+            "lookups/" + csvFile
+        );
 
-"<tr>" +
+    const text =
+        await response.text();
 
-"<td>" +
+    const lines =
+        text.split("\n");
 
-line +
+    const dropdown =
+        document.getElementById(
+            dropdownID
+        );
 
-"</td>" +
+    dropdown.innerHTML = "";
 
-"<td>" +
+    lines.forEach(
+        line => {
 
-"<input type='checkbox'>" +
+        line =
+            line.trim();
 
-"</td>" +
+        if(line != ""){
 
-"<td>" +
+            let option =
+                document.createElement(
+                    "option"
+                );
 
-"<input type='checkbox'>" +
+            option.text =
+                line;
 
-"</td>" +
+            dropdown.add(
+                option
+            );
 
-"</tr>";
+        }
+
+    });
 
 }
 
-}
-
+loadDropdown(
+    "roles.csv",
+    "role_dropdown"
 );
 
-document.getElementById(
-
-"product_table"
-
-).innerHTML=
-
-output;
-
-}
-
-function submitSurvey(){
-
-alert(
-
-"WROMP Survey Submitted"
-
+loadDropdown(
+    "products.csv",
+    "provide_dropdown"
 );
 
-}
+loadDropdown(
+    "products.csv",
+    "need_dropdown"
+);
 
-loadProducts();
+async function submitBusiness(){
+
+    let business =
+        document.getElementById(
+            "business_name"
+        ).value;
+
+    let zip =
+        document.getElementById(
+            "zip"
+        ).value;
+
+    let role =
+        document.getElementById(
+            "role_dropdown"
+        ).value;
+
+    let category =
+        document.getElementById(
+            "category"
+        ).value;
+
+    let email =
+        document.getElementById(
+            "email"
+        ).value;
+
+    let provide =
+        document.getElementById(
+            "provide_dropdown"
+        ).value;
+
+    let need =
+        document.getElementById(
+            "need_dropdown"
+        ).value;
+    let haul =
+        document.getElementById(
+            "haul"
+        ).value;
+
+    await fetch(
+        "/save_business",
+        {
+            method: "POST",
+            headers: {
+                "Content-Type":
+                "application/x-www-form-urlencoded"
+            },
+            body:
+                "business=" +
+                encodeURIComponent(
+                    business
+                ) +
+                "&zip=" +
+                encodeURIComponent(
+                    zip
+                ) +
+                "&role=" +
+                encodeURIComponent(
+                    role
+                ) +
+                "&provide=" +
+                encodeURIComponent(
+                    provide
+                ) +
+                "&need=" +
+                encodeURIComponent(
+                    need
+                )
+        }
+    );
+
+    alert(
+
+        "Registered\n\n" +
+   
+
+        business + "\n" +
+        zip + "\n" +
+        role + "\n" +
+        category + "\n" +
+        provide + "\n" +
+        need
+
+    );
+
+
+}
 
 </script>
 
 </body>
 
 </html>
+

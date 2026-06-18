@@ -3,24 +3,47 @@
 <html>
 
 <head>
-
-<title>
-
-WROMP Matches
-
-</title>
-
+<title>Marketplace Match Engine</title>
 </head>
 
 <body>
+<header style="background:#2e5d34;color:white;padding:18px;text-align:center;">
+<h1 style="margin:0;">WROMP</h1>
+<h2 style="margin:6px 0 0 0;font-weight:normal;">
+Watershed Resilience Online Marketplace
+</h2>
+</header>
 
-<h1>
+<nav style="background:#dfe9dd;padding:12px;text-align:center;">
+<a href="index.html">Home</a> |
+<a href="business_intake.html">Business Registration</a> |
+<a href="rfq_intake.html">Transaction Request</a> |
+<a href="businesses_view.html">Business Directory</a> |
+<a href="requests_view.html">Stored Requests</a> |
+<a href="matches.html">Match Engine</a>
+</nav>
 
-WROMP Matches
+<br>
 
-</h1>
+<h2>Marketplace Match Engine</h2>
 
-Selected Product:
+<p><b>Select a product to find potential suppliers and users.</b></p>
+
+Match Type:<br>
+
+<select id="match_type">
+
+<option value="provider">Find Providers</option>
+
+<option value="consumer">Find Consumers</option>
+
+<option value="both">Show Both</option>
+
+</select>
+
+<br><br>
+
+Select Product:
 
 <select
 
@@ -60,7 +83,7 @@ onclick=
 
 >
 
-Find Matches
+Find Matching Businesses
 
 </button>
 
@@ -85,6 +108,11 @@ document.getElementById(
 ).value
 
 .toLowerCase();
+
+let matchType =
+    document.getElementById(
+        "match_type"
+    ).value;
 
 const response=
 
@@ -178,33 +206,21 @@ output;
 
 <br><hr><br>
 
-<button
-
-onclick=
-
-"window.location=
-'business_intake.html'"
-
->
-
-Survey
-
+<button onclick="window.location='business_intake.html'">
+Business Registration
 </button>
 
-<button
+<button onclick="window.location='businesses_view.html'">
+Business Directory
+</button>
 
-onclick=
+<button onclick="window.location='requests_view.html'">
+Stored Requests
+</button>
 
-"window.location=
-'search.html'"
-
->
-
-Search
-
+<button onclick="window.location='index.html'">
+Home
 </button>
 
 </body>
-
 </html>
-

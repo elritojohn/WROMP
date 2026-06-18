@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+<title>Transaction Request</title>
+</head>
+
+<body>
+<header style="background:#2e5d34;color:white;padding:18px;text-align:center;">
+<h1 style="margin:0;">WROMP</h1>
+<h2 style="margin:6px 0 0 0;font-weight:normal;">
+Watershed Resilience Online Marketplace
+</h2>
+</header>
+
+<nav style="background:#dfe9dd;padding:12px;text-align:center;">
+<a href="index.html">Home</a> |
+<a href="business_intake.html">Business Registration</a> |
+<a href="rfq_intake.html">Transaction Request</a> |
+<a href="businesses_view.html">Business Directory</a> |
+<a href="requests_view.html">Stored Requests</a> |
+<a href="matches.html">Match Engine</a>
+</nav>
+
+<br>
+<h2>Transaction Request</h2>
+
+<p><b>For Registered WROMP Businesses</b></p>
+
+<form>
+
+Business: <br> <select id="business_dropdown">
+
+<option>Loading Businesses...</option>
+</select>
+
+<br><br>
+
+Role: <br> <select id="role_dropdown">
+
+<option>Loading Roles...</option>
+</select>
+
+<br><br>
+
+Intent: <br> <select id="intent_dropdown">
+
+<option>Purchase</option>
+<option>Provide</option>
+</select>
+
+<br><br>
+
+Product: <br> <select id="product_dropdown">
+
+<option>Loading Products...</option>
+</select>
+
+<br><br>
+
+Quantity: <br> <input id="quantity_input" type="text">
+
+<br><br>
+
+Unit: <br> <select id="unit_dropdown">
+
+<option>Loading Units...</option>
+</select>
+
+<br><br>
+
+Moisture: <br> <select id="moisture_dropdown">
+
+<option>Green</option>
+<option>Air Dry</option>
+<option>Dry</option>
+<option>Unknown</option>
+</select>
+
+<br><br>
+
+Specification: <br>
+
+<textarea id="spec_input" rows="4" cols="50"></textarea>
+
+<br><br>
+
+ZIP: <br> <input id="zip_input" type="text">
+
+<br><br>
+
+Maximum Haul (Miles): <br> <input id="haul_input" type="text">
+
+<br><br>
+
+<button type="button" onclick="submitRequest()">
+Submit Request
+</button>
+
+</form>
+
+<script>
+
+async function loadDropdown(csvFile, dropdownID) {
+
+    const response = await fetch("lookups/" + csvFile);
+    const text = await response.text();
+
+    const dropdown =
+        document.getElementById(dropdownID);
+
+    dropdown.innerHTML = "";
+
+    const lines =
+        text.split("\n");
+
+    lines.sort();
+
+    lines.forEach(line => {
+
+        line = line.trim();
+
+        if (line !== "") {
+
+            let option =
+                document.createElement("option");
+
+            option.text = line;
+
+            dropdown.add(option);
+
+        }
+
+    });
+
+
+}
+
+loadDropdown("businesses.csv", "business_dropdown");
+loadDropdown("roles.csv", "role_dropdown");
+loadDropdown("products.csv", "product_dropdown");
+loadDropdown("units.csv", "unit_dropdown");
+
+async function submitRequest() {
+
+    let business =
+        document.getElementById("business_dropdown").value;
+
+    let role =
+        document.getElementById("role_dropdown").value;
+
+    let intent =
+        document.getElementById("intent_dropdown").value;
+
+    let product =
+        document.getElementById("product_dropdown").value;
+
+    let quantity =
+        document.getElementById("quantity_input").value;
+
+    let unit =
+        document.getElementById("unit_dropdown").value;
+
+    let moisture =
+        document.getElementById("moisture_dropdown").value;
+
+    let specification =
+        document.getElementById("spec_input").value;
+
+    let zip =
+        document.getElementById("zip_input").value;
+
+    let haul =
+        document.getElementById("haul_input").value;
+
+    await fetch("/save_request", {
+        method: "POST",
+        headers: {
+            "Content-Type":
+                "application/x-www-form-urlencoded"
+        },
+        body:
+            "business=" + encodeURIComponent(business) +
+            "&role=" + encodeURIComponent(role) +
+            "&intent=" + encodeURIComponent(intent) +
+            "&product=" + encodeURIComponent(product) +
+            "&quantity=" + encodeURIComponent(quantity) +
+            "&unit=" + encodeURIComponent(unit) +
+            "&moisture=" + encodeURIComponent(moisture) +
+            "&specification=" + encodeURIComponent(specification) +
+            "&zip=" + encodeURIComponent(zip) +
+            "&haul=" + encodeURIComponent(haul)
+    });
+
+    alert("Request Stored");
+
+}
+
+</script>
+
+</body>
+</html>

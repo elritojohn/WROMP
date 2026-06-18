@@ -1,2 +1,7 @@
-Business,Role,Intent,Product,Quantity,Unit,Moisture,Specification,ZIP,MaxHaul
+Business,Role,Intent,Product,Quantity,Unit,Moisture,Specification,ZIP,MaxHaul,Date_Requested,Status,Notes
+,,,,,,,,,,,,
+,,,,,,,,,,,,
+Loblolly Logging and Lumber Pagosa Lumber -,Supplier,Purchase,Poles,100,Poles,Green,"4"" D 6' L",98765,87,,,
+"Barela Timber Mgmt Co., Inc.",Processor,Purchase,Sawlogs,5,Truckloads,Green,Ponderosa,88344,100,,,
 
+All Trees Firewood,Processor,Purchase,Small Diameter Pine,2,Truckloads,Air Dry,Cedar and Oak,88765,80

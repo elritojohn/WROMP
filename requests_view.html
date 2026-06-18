@@ -2,86 +2,78 @@
 <html>
 
 <head>
-<title>Businesses</title>
+<h2>Stored Requests</h2>
+
+<p><b>Current Marketplace Requests</b></p>
 </head>
 
 <body>
+
+
 <header style="background:#2e5d34;color:white;padding:18px;text-align:center;">
-
 <h1 style="margin:0;">WROMP</h1>
-
 <h2 style="margin:6px 0 0 0;font-weight:normal;">
 Watershed Resilience Online Marketplace
 </h2>
-
 </header>
 
 <nav style="background:#dfe9dd;padding:12px;text-align:center;">
-
 <a href="index.html">Home</a> |
-
 <a href="business_intake.html">Business Registration</a> |
-
 <a href="rfq_intake.html">Transaction Request</a> |
-
 <a href="businesses_view.html">Business Directory</a> |
-
 <a href="requests_view.html">Stored Requests</a> |
-
 <a href="matches.html">Match Engine</a>
-
 </nav>
 
 <br>
-<h2>Registered Businesses</h2>
 
-<p><b>WROMP Business Directory</b></p>
 
-<table border="1" id="business_table">
-id="business_table"
-style="width:100%;border-collapse:collapse;">
+
+<p><b>Current Marketplace Requests</b></p>
+<h1>Stored Requests</h1>
+
+<table border="1"
+id="request_table">
 
 <tr>
+<tr>
 <th>Business</th>
-<th>ZIP</th>
 <th>Role</th>
-<th>Category</th>
-<th>Email</th>
-<th>Provide</th>
-<th>Need</th>
-<th>Contact</th>
-<th>Phone</th>
+<th>Intent</th>
+<th>Product</th>
+<th>Quantity</th>
+<th>Unit</th>
+<th>Moisture</th>
+<th>Specification</th>
+<th>ZIP</th>
+<th>Maximum Haul</th>
+<th>Date Requested</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
 </tr>
 
 </table>
 
 <script>
 
-async function loadBusinesses(){
+async function loadRequests(){
 
     const response =
         await fetch(
-            "data/businesses_store.csv"
+            "data/requests.csv"
         );
+
     const text =
         await response.text();
 
     const rows =
         text.split("\n");
 
-    rows.sort(
-        function(a,b){
-
-            return a.localeCompare(
-                b
-            );
-
-        }
-    );
-
     const table =
         document.getElementById(
-            "business_table"
+            "request_table"
         );
 
     rows.forEach(
@@ -91,7 +83,7 @@ async function loadBusinesses(){
             row.split(",");
 
         if(
-            cols.length > 4
+            cols.length > 3
         ){
 
             let tr =
@@ -126,7 +118,7 @@ async function loadBusinesses(){
 
 }
 
-loadBusinesses();
+loadRequests();
 
 </script>
 

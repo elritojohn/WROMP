@@ -1,0 +1,56 @@
+Business_Name,Facility Type,Town,State,Zip,County,Website,Status ,Included,,BusinessID,DateCreated,DateUpdated,,Business_Name
+Rustic Log  Log ,Log Furniture,,CO,,Alamosa,,Active,Yes,,,,,,Rustic Log  Log 
+Forest Health Timber Products ,Sawmill,,CO,,Archuleta,,Active,No,,,,,,Forest Health Timber Products 
+Loblolly Logging and Lumber Pagosa Lumber -  ,Sawmill,,CO,,Archuleta,,Active,,,,,,,Loblolly Logging and Lumber Pagosa Lumber -  
+Stateline Firewood & Logging ,Sawmill,,CO,,Archuleta,,Active,No,,,,,,Stateline Firewood & Logging 
+Loblolly Logging and Lumber    -,Sawmill,,CO,,Archuleta,,Active,Yes,,BusinessName,,,,Loblolly Logging and Lumber    -
+Satterwhite Log Homes Log Home,Log homes,,NM,,Rio Arriba,,Active,Yes,,ContactName,,,,Satterwhite Log Homes Log Home
+W. H. Moore Cash Lumber,Sawmill,,NM,,Rio Arriba,,Active,Yes,,Website,,,,W. H. Moore Cash Lumber
+Western Wood Products (posts) ,Post/pole/piling,,NM,,Colfax,,Active,Yes,,Email,,,,Western Wood Products (posts) 
+Mammoth Mill & Construction ,Sawmill,,NM,,Colfax,,Active,Yes,,,,,,Mammoth Mill & Construction 
+Western Wood Products (pellets) Fuel,pellets,,NM,,Colfax,,Active,No,,Category,,,,Western Wood Products (pellets) Fuel
+Silver Dollar Wood Products LLC,Bark products,,NM,,Colfax,,Active,No,,Role,,,,Silver Dollar Wood Products LLC
+Western Wood Products  ,Sawmill,,NM,,Colfax,,Active,Yes,,,,,,Western Wood Products  
+Quality Timber & Wood Products,Sawmill,,CO,,Conejos,,Active,No,,Address,,,,Quality Timber & Wood Products
+Allpine Lumber Co.  ,Sawmill,,CO,,Conejos,,Active,Yes,,City,,,,Allpine Lumber Co.  
+Blanca Forestry Products  ,Sawmill,,CO,,Costilla,,Active,Yes,,State,,,,Blanca Forestry Products  
+Spotted Owl Timber Inc. ,Sawmill/vigas/latillas,,NM,,Santa Fe,,Active,Yes,,ZIP,,,,Spotted Owl Timber Inc. 
+Diamante Lumber   ,Sawmill,,NM,,Santa Fe,,Active,No,,,,,,Diamante Lumber   
+Firewood Company of Santa Fe,Firewood,,NM,,Santa Fe,,Active,Yes,,Latitude,,,,Firewood Company of Santa Fe
+Rocky Mountain Timber Products ,Sawmill,,CO,,Rio Grande,,Active,Yes,,Longitude,,,,Rocky Mountain Timber Products 
+Eric Husted  CO ,Sawmill,,CO,,La Plata,,Active,Yes,,,,,,Eric Husted  CO 
+Blue Ridge Log Works Log,furniture,,CO,,Larimer,,Active,Yes,,MaximumHaulMiles,,,,Blue Ridge Log Works Log
+Morgan Timber Products - Post,Post/pole/piling,,CO,,Larimer,,Active,Yes,,,,,,Morgan Timber Products - Post
+Morgan Timber Products  ,Sawmill,,CO,,Larimer,,Active,Yes,,Provide,,,,Morgan Timber Products  
+Elkhorn Lumber Company  ,Sawmill,,CO,,Larimer,,Active,Yes,,Need,,,,Elkhorn Lumber Company  
+Barela Timber Mgmt Co. Sawmill,Sawmill,,NM,,San Miguel,,Active,Yes,,,,,,Barela Timber Mgmt Co. Sawmill
+"Barela Timber Mgmt Co., Inc.",Viga/latillas,,NM,,San Miguel,,Active,Yes,,,,,,"Barela Timber Mgmt Co., Inc."
+Aspen Wood Products Other primary,manufacturer,,CO,,Montezuma,,Active,Yes,,,,,,Aspen Wood Products Other primary
+Ironwood Group LLC  ,Plywood,,CO,,Montezuma,,Active,Yes,,,,,,Ironwood Group LLC  
+West Fork Lumber  ,Sawmill,,CO,,Montezuma,,Inactive,Yes,,,,,,West Fork Lumber  
+Aspen Wall Wood  ,Sawmill,,CO,,Montezuma,,Active,Yes,,,,,,Aspen Wall Wood  
+Ott's Mill Sawmill  ,Sawmill,,CO,,Montezuma,,Active,Yes,,,,,,Ott's Mill Sawmill  
+Stonertop Lumber Sawmill  ,Sawmill,,CO,,Montezuma,,Active,Yes,,,,,,Stonertop Lumber Sawmill  
+Frontier Log Homes  ,Log homes,,CO,,Montrose,,Active,Yes,,,,,,Frontier Log Homes  
+"Montrose Forest Products, LLC. ",Sawmill,,CO,,Montrose,,Active,Yes,,,,,,"Montrose Forest Products, LLC. "
+Custom Log Crafting Log ,Log homes,,CO,,Montrose,,Inactive,Yes,,,,,,Custom Log Crafting Log 
+TJ's Wood Products Log ,Log homes,,CO,,Park,,Active,Yes,,,,,,TJ's Wood Products Log 
+Alan Eos Mountain Lumber ,Sawmill,,CO,,Park,,Active,Yes,,,,,,Alan Eos Mountain Lumber 
+Mule Skinner Log Works Log,Log homes,,CO,,La Plata,,Active,Yes,,,,,,Mule Skinner Log Works Log
+Timber Age Systems  &,Sawmill,,CO,,La Plata,,Active,No,,,,,,Timber Age Systems  &
+Wildcat Services Sawmill  ,Sawmill,,CO,,La Plata,,Active,No,,,,,,Wildcat Services Sawmill  
+San Juan Structures Log home,Log homes,,CO,,La Plata,,Active,Yes,,,,,,San Juan Structures Log home
+Padilla Logging Restoration  ,Firewood,,NM,,Rio Arriba,,Active,No,,,,,,Padilla Logging Restoration  
+Mountain Valley Lumber - House,Log homes,,CO,,Saguache,,Active,Yes,,,,,,Mountain Valley Lumber - House
+Mountain Valley Lumber - Sawmill,Sawmill,,CO,,Saguache,,Active,Yes,,,,,,Mountain Valley Lumber - Sawmill
+Old Wood   ,Sawmill,,NM,,San Miguel,,Active,Yes,,,,,,Old Wood   
+TMR Custom Sawmill  ,Sawmill,,NM,,San Miguel,,Active,No,,,,,,TMR Custom Sawmill  
+Walatowa Timber (Pellets) Fuel ,Sawmill,,NM,,Sandoval,,Active,No,,,,,,Walatowa Timber (Pellets) Fuel 
+Wholesale Timber and Vigas -,Sawmill,,NM,,Sandoval,,Active,Yes,,,,,,Wholesale Timber and Vigas -
+Wholesale Timber and Vigas -,Vigas/latillas,,NM,,Sandoval,,Active,Yes,,,,,,Wholesale Timber and Vigas -
+Walatowa Timber Industries  ,Sawmill,,NM,,Sandoval,,Active,Yes,,,,,,Walatowa Timber Industries  
+All Trees Firewood  ,Firewood,,NM,,Santa,,Active,No,,,,,,All Trees Firewood  
+Santa Fe EcoWood  ,Firewood,,NM,,Santa,,Active,No,,,,,,Santa Fe EcoWood  
+Hansen Lumber Co  ,Sawmill,,NM,,Santa Fe,,Active,Yes,,,,,,Hansen Lumber Co  
+Olguin Sawmill and Firewood ,Sawmill,,NM,,Taos,,Active,Yes,,,,,,Olguin Sawmill and Firewood 
+Olguin Sawmill - Vigas ,Viga/latillas,,NM,,Taos,,Active,Yes,,,,,,Olguin Sawmill - Vigas 
