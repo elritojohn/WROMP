@@ -1,157 +1,405 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-<title>Business Registration</title>
+<meta charset="UTF-8">
+<title>Business Registration and Update</title>
+
+<style>
+
+body{
+    font-family:Arial,sans-serif;
+    margin:0;
+    background:#f4f6f4;
+}
+
+header{
+    background:#2e5d34;
+    color:white;
+    padding:18px;
+}
+
+header h1{
+    margin:0;
+}
+
+nav{
+    background:#d9e7d6;
+    padding:10px;
+    text-align:center;
+}
+
+nav a{
+    color:#2e5d34;
+    text-decoration:none;
+    font-weight:bold;
+    margin:0 12px;
+}
+
+.container{
+    max-width:900px;
+    margin:auto;
+    background:white;
+    padding:25px;
+}
+
+.notice{
+    background:#eef7ea;
+    border-left:5px solid #2e5d34;
+    padding:12px;
+    margin-bottom:20px;
+}
+
+table{
+    width:100%;
+}
+
+td{
+    padding:8px;
+    vertical-align:top;
+}
+
+input,select,textarea{
+    width:100%;
+    padding:6px;
+    box-sizing:border-box;
+}
+
+textarea{
+    height:90px;
+}
+
+button{
+    background:#2e5d34;
+    color:white;
+    border:none;
+    padding:10px 18px;
+    margin:8px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#204426;
+}
+
+</style>
+
 </head>
 
 <body>
 
-<h1>Business Registration</h1>
+<header>
+
+<h1>Watershed Resilience Online Marketplace</h1>
+
+<p>Business Registration and Update</p>
+
+</header>
+
+<nav>
+
+<a href="index.html">Home</a> |
+<a href="business_intake.html">Business Registration</a> |
+<a href="businesses_view.html">Business Directory</a> |
+<a href="rfq_intake.html">Transaction Request</a> |
+<a href="requests_view.html">Stored Requests</a> |
+<a href="matches.html">Marketplace Matches</a>
+
+</nav>
+
+<div class="container">
+
+<h2>Business Registration and Update</h2>
+
+<div class="notice">
+
+<b>Prefilled Information</b><br><br>
+
+Information below was imported from the
+<b>2024 Rio Chama CFLRP Capacity Survey.</b>
+
+Please review and update any information that has changed.
+
+Fields showing <b>Missing</b> would especially benefit from your assistance.
+
+</div>
 
 <form>
 
-Business Name:
+<table>
+
+<tr>
+
+<td>Business Name</td>
+
+<td>
 
 <input
 id="business_name"
 type="text">
 
-<br><br>
+</td>
 
-ZIP:
+</tr>
 
-<input
-id="zip"
-type="text">
+<tr>
 
-<br><br>
+<td>Category</td>
 
-Role:
-
-<select
-id="role_dropdown">
-
-<option>
-Loading Roles...
-</option>
-
-</select>
-
-<br><br>
-
-Category:
+<td>
 
 <input
 id="category"
 type="text">
 
-<br><br>
+</td>
 
-Email:
+</tr>
+
+<tr>
+
+<td>Business Role</td>
+
+<td>
+
+<select
+id="role_dropdown">
+
+<option>Loading...</option>
+
+</select>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>Contact Name</td>
+
+<td>
+
+<input
+id="contact_name"
+type="text">
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>Phone</td>
+
+<td>
+
+<input
+id="phone"
+type="text">
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>Email</td>
+
+<td>
 
 <input
 id="email"
+type="email">
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>Website</td>
+
+<td>
+
+<input
+id="website"
 type="text">
 
-<br><br>
+</td>
 
-Products Provided:
+</tr>
+
+<tr>
+
+<td>Town</td>
+
+<td>
+
+<input
+id="town"
+type="text">
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>State</td>
+
+<td>
+
+<input
+id="state"
+type="text"
+value="NM">
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>ZIP</td>
+
+<td>
+
+<input
+id="zip"
+type="text">
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>County</td>
+
+<td>
+
+<input
+id="county"
+type="text">
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>Products Provided</td>
+
+<td>
 
 <select
 id="provide_dropdown">
 
-<option>
-Loading Products...
-</option>
+<option>Loading...</option>
 
 </select>
 
-<br><br>
+</td>
 
-Products Desired:
+</tr>
+
+<tr>
+
+<td>Products Needed</td>
+
+<td>
 
 <select
 id="need_dropdown">
 
-<option>
-Loading Products...
-</option>
+<option>Loading...</option>
 
 </select>
 
-<br><br>
+</td>
 
-Maximum Haul:
+</tr>
 
-<input
-id="haul"
-type="text">
+<tr>
 
-<br><br>
+<td>Notes</td>
+
+<td>
+
+<textarea
+id="notes"></textarea>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td colspan="2" align="center">
 
 <button
 type="button"
 onclick="submitBusiness()">
 
-Register Business
+Submit Registration / Update
 
 </button>
-<br><br>
 
-<a href="index.html">
-<button type="button">Return to Home</button>
+<button
+type="reset">
+
+Reset
+
+</button>
+
+<a href="RioChama_2024_Report.pdf" target="_blank">
+
+<button
+type="button">
+
+View 2024 CFLRP Report
+
+</button>
+
 </a>
+
+</td>
+
+</tr>
+
+</table>
+
 </form>
 
 <script>
 
-async function loadDropdown(
-    csvFile,
-    dropdownID
-){
+async function loadDropdown(csvFile, dropdownID){
 
     const response =
-        await fetch(
-            "lookups/" + csvFile
-        );
+        await fetch("lookups/" + csvFile);
 
     const text =
         await response.text();
 
-    const lines =
-        text.split("\n");
-
     const dropdown =
-        document.getElementById(
-            dropdownID
-        );
+        document.getElementById(dropdownID);
 
     dropdown.innerHTML = "";
 
-    lines.forEach(
-        line => {
-
-        line =
-            line.trim();
-
-        if(line != ""){
+    text.split("\n")
+        .map(x => x.trim())
+        .filter(x => x != "")
+        .sort()
+        .forEach(item=>{
 
             let option =
-                document.createElement(
-                    "option"
-                );
+                document.createElement("option");
 
-            option.text =
-                line;
+            option.text = item;
+            option.value = item;
 
-            dropdown.add(
-                option
-            );
+            dropdown.add(option);
 
-        }
-
-    });
+        });
 
 }
 
@@ -170,6 +418,7 @@ loadDropdown(
     "need_dropdown"
 );
 
+
 async function submitBusiness(){
 
     let business =
@@ -177,9 +426,9 @@ async function submitBusiness(){
             "business_name"
         ).value;
 
-    let zip =
+    let category =
         document.getElementById(
-            "zip"
+            "category"
         ).value;
 
     let role =
@@ -187,14 +436,44 @@ async function submitBusiness(){
             "role_dropdown"
         ).value;
 
-    let category =
+    let contact =
         document.getElementById(
-            "category"
+            "contact_name"
+        ).value;
+
+    let phone =
+        document.getElementById(
+            "phone"
         ).value;
 
     let email =
         document.getElementById(
             "email"
+        ).value;
+
+    let website =
+        document.getElementById(
+            "website"
+        ).value;
+
+    let town =
+        document.getElementById(
+            "town"
+        ).value;
+
+    let state =
+        document.getElementById(
+            "state"
+        ).value;
+
+    let zip =
+        document.getElementById(
+            "zip"
+        ).value;
+
+    let county =
+        document.getElementById(
+            "county"
         ).value;
 
     let provide =
@@ -206,63 +485,94 @@ async function submitBusiness(){
         document.getElementById(
             "need_dropdown"
         ).value;
-    let haul =
+
+    let notes =
         document.getElementById(
-            "haul"
+            "notes"
         ).value;
 
+    const body =
+
+        "business=" +
+        encodeURIComponent(business) +
+
+        "&category=" +
+        encodeURIComponent(category) +
+
+        "&role=" +
+        encodeURIComponent(role) +
+
+        "&contact=" +
+        encodeURIComponent(contact) +
+
+        "&phone=" +
+        encodeURIComponent(phone) +
+
+        "&email=" +
+        encodeURIComponent(email) +
+
+        "&website=" +
+        encodeURIComponent(website) +
+
+        "&town=" +
+        encodeURIComponent(town) +
+
+        "&state=" +
+        encodeURIComponent(state) +
+
+        "&zip=" +
+        encodeURIComponent(zip) +
+
+        "&county=" +
+        encodeURIComponent(county) +
+
+        "&provide=" +
+        encodeURIComponent(provide) +
+
+        "&need=" +
+        encodeURIComponent(need) +
+
+        "&notes=" +
+        encodeURIComponent(notes);
+
     await fetch(
+
         "/save_business",
+
         {
-            method: "POST",
-            headers: {
+
+            method:"POST",
+
+            headers:{
+
                 "Content-Type":
                 "application/x-www-form-urlencoded"
+
             },
-            body:
-                "business=" +
-                encodeURIComponent(
-                    business
-                ) +
-                "&zip=" +
-                encodeURIComponent(
-                    zip
-                ) +
-                "&role=" +
-                encodeURIComponent(
-                    role
-                ) +
-                "&provide=" +
-                encodeURIComponent(
-                    provide
-                ) +
-                "&need=" +
-                encodeURIComponent(
-                    need
-                )
+
+            body:body
+
         }
+
     );
 
     alert(
 
-        "Registered\n\n" +
-   
+        "Business Registration Updated\n\n" +
 
         business + "\n" +
-        zip + "\n" +
-        role + "\n" +
-        category + "\n" +
-        provide + "\n" +
-        need
+        contact + "\n" +
+        phone + "\n" +
+        email
 
     );
-
 
 }
 
 </script>
 
+</div>
+
 </body>
 
 </html>
-
