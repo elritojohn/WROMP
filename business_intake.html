@@ -535,7 +535,7 @@ async function submitBusiness(){
         "&notes=" +
         encodeURIComponent(notes);
 
-    await fetch(
+        await fetch(
 
         "/save_business",
 
@@ -558,12 +558,17 @@ async function submitBusiness(){
 
     alert(
 
-        "Business Registration Updated\n\n" +
+        "Thank you for completing the demonstration registration.\n\n" +
 
-        business + "\n" +
-        contact + "\n" +
-        phone + "\n" +
-        email
+        "In this GitHub demonstration, entries are not permanently stored.\n\n" +
+
+        "Business: " + business + "\n" +
+
+        "Contact: " + contact + "\n" +
+
+        "Phone: " + phone + "\n" +
+
+        "Email: " + email
 
     );
 
