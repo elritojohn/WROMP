@@ -536,26 +536,7 @@ async function submitBusiness(){
         "&notes=" +
         encodeURIComponent(notes);
 
-        await fetch(
-
-        "/save_business",
-
-        {
-
-            method:"POST",
-
-            headers:{
-
-                "Content-Type":
-                "application/x-www-form-urlencoded"
-
-            },
-
-            body:body
-
-        }
-
-    );
+           // Saving is disabled in the GitHub demonstration.
 
     alert(
 
