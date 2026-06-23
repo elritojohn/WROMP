@@ -136,7 +136,10 @@ Please feel free to explore the form and submit sample information as part of th
 
 <input
 id="business_name"
-type="text">
+type="text"
+list="business_list"
+onchange="fillBusiness(this.value)">
+<datalist id="business_list"></datalist>
 
 </td>
 
@@ -371,6 +374,8 @@ View 2024 CFLRP Report
 
 </form>
 
+<script src="js/wromp_lookup.js"></script>
+
 <script>
 
 async function loadDropdown(csvFile, dropdownID){
@@ -418,97 +423,59 @@ loadDropdown(
     "products.csv",
     "need_dropdown"
 );
-// ---------- Business Master Lookup ----------
 
-let businessDB = [];
+initWROMP();
 
-async function loadBusinesses() {
 
-    const response = await fetch("data/businesses_master.csv");
-    const text = await response.text();
 
-    const rows = text.trim().split("\n");
+// -------- Progressive Business Lookup --------
+let businessDB=[];
 
-    const headers = rows[0].split(",");
-
-    for (let i = 1; i < rows.length; i++) {
-
-        const cols = rows[i].split(",");
-
-        let b = {};
-
-        headers.forEach((h, j) => {
-
-            b[h.trim()] = cols[j] ? cols[j].trim() : "";
-
-        });
-
-        businessDB.push(b);
-
-    }
-
-    console.log("Loaded " + businessDB.length + " businesses");
-
+async function loadBusinesses(){
+ const r=await fetch("data/businesses_master.csv");
+ const t=await r.text();
+ const rows=t.trim().split(/\r?\n/);
+ const h=rows.shift().split(",");
+ businessDB=rows.map(line=>{
+   const c=line.split(",");
+   let o={};
+   h.forEach((k,i)=>o[k.trim()]=(c[i]||"").trim());
+   return o;
+ });
+ const dl=document.getElementById("business_list");
+ if(dl){
+   businessDB.sort((a,b)=>(a.Business_Name||"").localeCompare(b.Business_Name||""));
+   businessDB.forEach(b=>{
+      const opt=document.createElement("option");
+      opt.value=b.Business_Name||"";
+      dl.appendChild(opt);
+   });
+ }
 }
 
-loadBusinesses().then(() => {
-
-    const list =
-        document.getElementById("business_list");
-
-    businessDB
-        .sort((a,b)=>
-            (a.Business_Name||"")
-            .localeCompare(b.Business_Name||"")
-        )
-        .forEach(b=>{
-
-            const option =
-                document.createElement("option");
-
-            option.value =
-                b.Business_Name;
-
-            list.appendChild(option);
-
-        });
-
-});
-
-/* <<< PASTE PART 1 HERE >>> */
 function fillBusiness(name){
+ const b=businessDB.find(x=>(x.Business_Name||"").toLowerCase()===name.toLowerCase());
+ if(!b) return;
+ document.getElementById("category").value=b.Facility_Type||"Missing";
+ document.getElementById("contact_name").value=b.Contact_Name||"Missing";
+ document.getElementById("phone").value=b.Phone||"Missing";
+ document.getElementById("email").value=b.Email||"Missing";
+ document.getElementById("website").value=b.Website||"Missing";
+ document.getElementById("town").value=b.Town||"Missing";
+ document.getElementById("state").value=b.State||"Missing";
+ document.getElementById("zip").value=b.ZIP||"Missing";
+ document.getElementById("county").value=b.County||"Missing";
+ document.getElementById("notes").value=b.Notes||"";
+}
+loadBusinesses();
 
-    const b = businessDB.find(x =>
-        (x.Business_Name || "").toLowerCase() === name.toLowerCase()
-    );
 
-    if(!b) return;
+async function submitBusiness(){
 
-    document.getElementById("category").value =
-        b.Facility_Type || "Missing";
-
-    document.getElementById("contact_name").value =
-        b.Contact_Name || "Missing";
-
-    document.getElementById("phone").value =
-        b.Phone || "Missing";
-
-    document.getElementById("email").value =
-        b.Email || "Missing";
-
-    document.getElementById("website").value =
-        b.Website || "Missing";
-
-    document.getElementById("town").value =
-        b.Town || "Missing";
-
-    document.getElementById("state").value =
-        b.State || "Missing";
-
-    document.getElementById("zip").value =
-        b.ZIP || "Missing";
-
-async
+    let business =
+        document.getElementById(
+            "business_name"
+        ).value;
 
     let category =
         document.getElementById(
@@ -619,7 +586,26 @@ async
         "&notes=" +
         encodeURIComponent(notes);
 
-           // Saving is disabled in the GitHub demonstration.
+        await fetch(
+
+        "/save_business",
+
+        {
+
+            method:"POST",
+
+            headers:{
+
+                "Content-Type":
+                "application/x-www-form-urlencoded"
+
+            },
+
+            body:body
+
+        }
+
+    );
 
     alert(
 
