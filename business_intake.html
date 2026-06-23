@@ -418,14 +418,97 @@ loadDropdown(
     "products.csv",
     "need_dropdown"
 );
+// ---------- Business Master Lookup ----------
 
+let businessDB = [];
 
-async function submitBusiness(){
+async function loadBusinesses() {
 
-    let business =
-        document.getElementById(
-            "business_name"
-        ).value;
+    const response = await fetch("data/businesses_master.csv");
+    const text = await response.text();
+
+    const rows = text.trim().split("\n");
+
+    const headers = rows[0].split(",");
+
+    for (let i = 1; i < rows.length; i++) {
+
+        const cols = rows[i].split(",");
+
+        let b = {};
+
+        headers.forEach((h, j) => {
+
+            b[h.trim()] = cols[j] ? cols[j].trim() : "";
+
+        });
+
+        businessDB.push(b);
+
+    }
+
+    console.log("Loaded " + businessDB.length + " businesses");
+
+}
+
+loadBusinesses().then(() => {
+
+    const list =
+        document.getElementById("business_list");
+
+    businessDB
+        .sort((a,b)=>
+            (a.Business_Name||"")
+            .localeCompare(b.Business_Name||"")
+        )
+        .forEach(b=>{
+
+            const option =
+                document.createElement("option");
+
+            option.value =
+                b.Business_Name;
+
+            list.appendChild(option);
+
+        });
+
+});
+
+/* <<< PASTE PART 1 HERE >>> */
+function fillBusiness(name){
+
+    const b = businessDB.find(x =>
+        (x.Business_Name || "").toLowerCase() === name.toLowerCase()
+    );
+
+    if(!b) return;
+
+    document.getElementById("category").value =
+        b.Facility_Type || "Missing";
+
+    document.getElementById("contact_name").value =
+        b.Contact_Name || "Missing";
+
+    document.getElementById("phone").value =
+        b.Phone || "Missing";
+
+    document.getElementById("email").value =
+        b.Email || "Missing";
+
+    document.getElementById("website").value =
+        b.Website || "Missing";
+
+    document.getElementById("town").value =
+        b.Town || "Missing";
+
+    document.getElementById("state").value =
+        b.State || "Missing";
+
+    document.getElementById("zip").value =
+        b.ZIP || "Missing";
+
+async
 
     let category =
         document.getElementById(
@@ -536,26 +619,7 @@ async function submitBusiness(){
         "&notes=" +
         encodeURIComponent(notes);
 
-        await fetch(
-
-        "/save_business",
-
-        {
-
-            method:"POST",
-
-            headers:{
-
-                "Content-Type":
-                "application/x-www-form-urlencoded"
-
-            },
-
-            body:body
-
-        }
-
-    );
+           // Saving is disabled in the GitHub demonstration.
 
     alert(
 
